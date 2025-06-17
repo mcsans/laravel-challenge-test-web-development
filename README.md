@@ -8,27 +8,51 @@ Challenge ini bertujuan untuk menguji kemampuan peserta dalam membangun aplikasi
 
 ## 📝 Deskripsi Tantangan
 
-Silakan buat sebuah aplikasi web sederhana menggunakan **Laravel** dengan ketentuan berikut:
+Silakan buat sebuah aplikasi web **Manajemen Stok Produk (Product Stock Management)** sederhana menggunakan **Laravel** dengan ketentuan berikut:
 
-### 1. Halaman Home
+### 1. Authentication
 
-- **URL**: `/`
-- Menampilkan teks **"Hello World"**.
+- Menggunakan Laravel Breeze / Jetstream / atau implementasi manual.
+- Seluruh fitur hanya dapat diakses oleh user yang telah login (gunakan middleware `auth`).
 
-### 2. Halaman User
+### 2. CRUD User
 
-- **URL**: `/users`
+- **URL:** `/users`
 - Menyediakan fitur **CRUD** (Create, Read, Update, Delete) untuk data user.
-- Struktur data user minimal terdiri dari:
+- Struktur data minimal:
   - `id` (auto increment)
   - `name` (string)
   - `email` (string, unique)
   - `password` (string)
   - `created_at` dan `updated_at` (timestamp)
 
+### 3. CRUD Product
+
+- **URL:** `/products`
+- Menyediakan fitur **CRUD** untuk data produk.
+- Struktur data minimal:
+  - `id` (auto increment)
+  - `name` (string)
+  - `category` (string)
+  - `price` (integer)
+  - `stock` (integer) – total stok produk saat ini
+  - `description` (text)
+  - `created_at` dan `updated_at` (timestamp)
+
+### 4. Manajemen Stock
+
+- **URL:** `/stock`
+- Menyediakan fitur **CRUD** untuk manajemen stok produk.
+- Struktur data minimal:
+  - `id` (auto increment)
+  - `user_id` (foreignId) – user yang melakukan perubahan stok
+  - `product_id` (foreignId)
+  - `stock` (integer) – nilai bisa positif (penambahan) atau negatif (pengurangan)
+  - `created_at` dan `updated_at` (timestamp)
+
 #### Fitur halaman:
-- Tampilkan data user dalam bentuk **tabel**.
-- Tambah dan edit user dilakukan melalui **modal form (popup)**.
+- Tampilkan data dalam bentuk **tabel**.
+- Tambah dan edit dilakukan melalui **modal form (popup)**.
 - Tampilkan notifikasi saat operasi berhasil (opsional: toastr, sweetalert, dsb).
 
 ---
@@ -39,12 +63,12 @@ Silakan buat sebuah aplikasi web sederhana menggunakan **Laravel** dengan ketent
 - Gunakan **Blade template engine**.
 - Modal form dapat menggunakan **Bootstrap Modal** atau pustaka sejenis.
 - Data disimpan di database (boleh menggunakan SQLite/MySQL).
-- **Buat branch baru dari repository ini dengan nama sesuai nama Anda** (contoh: `johndoe`) lalu push semua hasil pengerjaan ke branch tersebut.
+- **Fork repository ini** lalu push semua hasil pengerjaan ke github anda.
 
 ---
 
 ## 📦 Bonus (Opsional)
 
-- Validasi form saat menambah dan mengedit user.
-- Gunakan **Laravel Resource Controller** untuk manajemen user.
+- Validasi form saat menambah dan mengedit data.
+- Gunakan **Laravel Resource Controller** untuk manajemen controller.
 - Gunakan **pagination** jika data user lebih dari 10.
